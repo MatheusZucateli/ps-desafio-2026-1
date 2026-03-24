@@ -12,6 +12,21 @@ class Category extends Model
     use HasFactory, HasUuids;
 
     protected $fillable = [
-        'name'
+        'name',
     ];
+
+    public function ArtigosEsportivos()
+    {
+        return $this->hasMany(ArtigosEsportivos::class, 'category_id', 'id');
+    }
+
+    protected static function booted()
+    {
+        self::deleting(function(Category $category){
+            $category->ArtigosEsportivos()->each(function (ArtigosEsportivos $artigosEsportivos){
+                $artigosEsportivos->delete();
+            });
+        });
+    }
+
 }
