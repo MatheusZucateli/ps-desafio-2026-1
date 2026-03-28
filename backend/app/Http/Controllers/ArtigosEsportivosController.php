@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ArtigosEsportivos;
 use App\Http\Requests\StoreArtigosEsportivosRequest;
 use App\Http\Requests\UpdateArtigosEsportivosRequest;
-use Faker\Guesser\Name;
-use Illuminate\Container\Attributes\Storage;
-use Illuminate\Support\Facades\Storage as FacadesStorage;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Throwable;
@@ -89,4 +87,18 @@ class ArtigosEsportivosController extends Controller
         $artigosEsportivos->delete();
         return response()->json(['Message' => 'Artigo esportivo deletado com sucesso']);
     }
+
+   public function decrementQtd($id): JsonResponse
+    {
+    $artigosEsportivos = $this->artigosEsportivos->findOrFail($id);
+
+    if ($artigosEsportivos->amount <= 0) {
+        return response()->json(['Message' => 'Artigo esportivo sem estoque disponível']);
+    }
+
+    $artigosEsportivos->update(['amount' => $artigosEsportivos->amount - 1]);
+
+    return response()->json($artigosEsportivos, Response::HTTP_OK);
+    }
+
 }
