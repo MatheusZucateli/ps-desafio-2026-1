@@ -28,6 +28,8 @@ Route::get('/artigosEsportivos/{id}', [ArtigosEsportivosController::class, 'show
 Route::put('/artigosEsportivos/{id}', [ArtigosEsportivosController::class, 'update']);
 Route::delete('/artigosEsportivos/{id}', [ArtigosEsportivosController::class, 'destroy']);
 
+Route::patch('/artigosEsportivos/{id}', [ArtigosEsportivosController::class, 'decrementQTD']);
+
 //Route::apiResource('/artigosEsportivos', ArtigosEsportivosController::class);
 
 Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
@@ -38,7 +40,6 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
 
 //Route::get('/artigosEsportivos', [ArtigosEsportivosController::class, 'index']);
 //Route::get('/artigosEsportivos/{id}', [ArtigosEsportivosController::class, 'show']);
-Route::patch('/artigosEsportivos/{id}', [ArtigosEsportivosController::class, 'decrementQTD']);
 
 
 Route::get('/', function () {
