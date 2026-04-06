@@ -1,3 +1,4 @@
+'use client'
 import { DashboardContainer } from '@/components/dashboard/dashboard-items'
 import {
   TabbleCellImage,
@@ -17,19 +18,32 @@ import { DialogUpdateSportsItem } from './dialog-update-sports-item'
 import { DialogSportsItemDelete } from './dialog-delete-sports-item'
 import { DialogInformationSportsItem } from './dialog-information-sports-item'
 import { DialogCreateSportsItem } from './dialog-create-sports-item'
+import { useEffect, useState } from 'react'
 
 export default async function ListSportsItems() {
-  const { response } = null // requisicao para api
+  const [sportsItem, setsportsItem] = useState<sportsItemType[]>([])
+  
+    useEffect(() => {
+      async function getsportsItem() {
+        const { response, error } = await api('GET', '/artigosEsportivos')
+  
+        if (response) {
+          setsportsItem(response as sportsItemType[])
+        } else {
+          console.error(error?.message)
+        }
+      }
+  
+      getsportsItem()
+    }, [])
 
-  if (!response) {
+  if (!sportsItem) {
     return (
       <DashboardContainer className="text-destructive">
         Não foi possível obter os imóveis.
       </DashboardContainer>
     )
   }
-
-  const sportsItems: sportsItemType[] = response
 
   return (
     <>
@@ -46,20 +60,26 @@ export default async function ListSportsItems() {
           <TableHeader>
             <TableRow>
               <TableHead>Imagem</TableHead>
-              <TableHead>Titulo</TableHead>
-              <TableHead>Categoria</TableHead>
+              <TableHead>Nome</TableHead>
+              <TableHead>Marca</TableHead>
+              <TableHead>Preço</TableHead>
+              <TableHead>Ano</TableHead>
               <TableHead>Quantidade</TableHead>
+              <TableHead>Categoria</TableHead>
               <TableHead className="text-right">Ações</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {sportsItems?.map((sportsItem: sportsItemType) => (
+            {sportsItem?.map((sportsItem: sportsItemType) => (
               <TableRow key={sportsItem.id}>
                 <TableCell>
                   <TabbleCellImage src={sportsItem.image} />
                 </TableCell>
                 
-                <TableCell>{sportsItem.title}</TableCell>
+                <TableCell>{sportsItem.name}</TableCell>
+                <TableCell>{sportsItem.brand}</TableCell>
+                <TableCell>{sportsItem.price}</TableCell>
+                <TableCell>{sportsItem.year}</TableCell>
                 <TableCell>{sportsItem.amount}</TableCell>
                 <TableCell>{sportsItem.category.name}</TableCell>
                 {/* demais propriedades de sportsItemType */}
@@ -84,7 +104,7 @@ export default async function ListSportsItems() {
               </TableRow>
             ))}
           </TableBody>
-          {!sportsItems.length && (
+          {!sportsItem.length && (
             <TableCaption>Nenhum artigo esportivo encontrado.</TableCaption>
           )}
         </Table>

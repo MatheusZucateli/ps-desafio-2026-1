@@ -1,52 +1,32 @@
-import { ProductCard } from "@/components/product-card";
-import styles from './Products.module.css';
-import { sportsItemType } from "@/types/sportsItem";
+'use client'
+
+import { api } from '@/services/api';
+import styles from './Products.module.css'
+import { sportsItemType } from '@/types/sportsItem'
+import { useEffect, useState } from 'react';
+import ProductCard from './ProductCard'
+import { error } from 'console';
 
 
 export default function Products() {
-  
-    const products : sportsItemType[] = [
-        {
-            id: '1',
-            name: 'Chuteira Predator Elite',
-            brand: 'Adidas',
-            price: 749.99,
-            year: 2024,
-            image: 'https://picsum.photos/seed/shoes1/500/400',
-            category: 'Calçados',
-            amount: 2,
-        },
-        {
-            id: '2',
-            name: 'Bola Official Match Pro',
-            brand: 'Nike',
-            price: 299.99,
-            year: 2024,
-            image: 'https://picsum.photos/seed/ball2/500/400',
-            category: 'Bolas',
-            amount: 12,
-        },
-        {
-            id: '3',
-            name: 'Raquete Blade 98 V9',
-            brand: 'Wilson',
-            price: 1299.99,
-            year: 2024,
-            image: 'https://picsum.photos/seed/gear1/500/400',
-            category: 'Equipamentos',
-            amount: 3,
-        },
-        {
-            id: '4',
-            name: 'Kit Uniforme Pro Team',
-            brand: 'Puma',
-            price: 349.99,
-            year: 2024,
-            image: 'https://picsum.photos/seed/clothes1/500/400',
-            category: 'Roupas',
-            amount: 15,
-        }
-    ]
+
+    const [products, setProducts] = useState<sportsItemType[]>([]);
+    
+    useEffect(() => {
+        async function getProducts() {
+            const { response, error } = await api('GET', '/artigosEsportivos')
+
+            if (response) {
+                setProducts(response as sportsItemType[])
+            } else {
+                console.error(error?.message)
+            }
+        }   
+
+    getProducts()
+    }, [])
+
+    console.log(products);
 
     return (
     <section className={styles.products} id="products">

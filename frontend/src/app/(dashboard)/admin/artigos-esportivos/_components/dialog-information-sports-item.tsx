@@ -29,11 +29,12 @@ export function DialogInformationSportsItem({
   const { toast } = useToast()
 
   useEffect(() => {
+
     const requestData = async () => {
-      const { response } = null
+      const { response } = await api('GET', `/artigosEsportivos/${id}`)
 
       if (response) {
-        setSportsItem(response)
+        setSportsItem(response as sportsItemType)
       } else {
         setSportsItem(null)
         toast({

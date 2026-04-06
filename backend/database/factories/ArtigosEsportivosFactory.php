@@ -17,11 +17,11 @@ class ArtigosEsportivosFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->words(3, true),
+            'name' => fake()->name(),
             'brand' => fake()->randomElement(['Nike', 'Adidas', 'Wilson', 'Penalty', 'Puma']),
             'price' => fake()->randomFloat(2, 50, 1500),
             'year' => fake()->year(),
-            'image' => fake()->imageUrl(640, 480, 'sports'),
+            'image' => 'https://picsum.photos/' . fake()->numberBetween(1, 1000),
             'amount' => fake()->numberBetween(1, 100),
             'category_id' => \App\Models\Category::factory()
         ];

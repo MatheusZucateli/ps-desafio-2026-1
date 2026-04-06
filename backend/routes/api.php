@@ -38,10 +38,6 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     //Route::apiResource('/artigosEsportivos', ArtigosEsportivosController::class)->except(['index', 'show']);
 });
 
-//Route::get('/artigosEsportivos', [ArtigosEsportivosController::class, 'index']);
-//Route::get('/artigosEsportivos/{id}', [ArtigosEsportivosController::class, 'show']);
-
-
 Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
