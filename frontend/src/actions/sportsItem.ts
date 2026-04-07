@@ -34,3 +34,13 @@ export async function destroySportsItem(id: string) {
 
     return JSON.stringify(res)
 }
+
+export async function buySportsItem(id: string) {
+    const res = await api('PATCH', `/artigosEsportivos/${id}`)
+
+    if (!res.error) {
+        revalidatePath('/artigos-esportivos', 'page')
+    }
+
+    return JSON.stringify(res)
+}

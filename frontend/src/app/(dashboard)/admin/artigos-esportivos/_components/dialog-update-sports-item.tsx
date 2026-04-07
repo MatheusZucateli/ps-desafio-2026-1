@@ -39,7 +39,7 @@ export function DialogUpdateSportsItem({ id, children }: DialogUpdateSportsItemP
       } else {
         setSportsItem(null)
         toast({
-          title: 'Artigo esportivo update não encontrado!',
+          title: 'Artigo esportivo não encontrado!',
         })
         setOpen(false)
       }

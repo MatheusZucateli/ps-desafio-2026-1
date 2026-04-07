@@ -1,10 +1,19 @@
 .productCard {
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     padding: 20px;
     text-align: center;
     position: relative;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.productCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.3);
+    border: 1px solid rgba(0, 210, 255, 0.5);
 }
 
 .productLink {
@@ -49,18 +58,18 @@
 }
 
 .productPrice {
-    font-size: 1.5rem;
-    color: #232323;
-    margin-bottom: 10px;
+    font-size: 1.6rem;
+    color: #001529;
+    margin-bottom: 15px;
     text-align: center;
-    font-weight: bold;
+    font-weight: 800;
 }
 
 .productStock {
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: #f69915;
+    background-color: #df8e1e;
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
@@ -69,14 +78,22 @@
 }
 
 .productButton {
-    background-color: #f69915;
+    background-color: #001529;
     color: #fff;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 700;
+    text-transform: uppercase;
     cursor: pointer;
     width: 100%;
+    transition: background-color 0.2s;
+    border: none;
+}
+
+.productButton:hover {
+    background-color: #00d2ff;
+    color: #001529;
 }
 
 .productButton:disabled {
