@@ -27,7 +27,7 @@
     display: block;
     width: 60px;
     height: 4px;
-    background: #00d2ff;
+    background: #b95e08;
     border-radius: 2px;
     margin: 10px auto 0;
 }
@@ -101,6 +101,8 @@
 }
 
 .categoriasList {
+    max-height: 150px;
+    overflow: scroll;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -132,17 +134,194 @@
     border-color: #001529;
 }
 
-@media (max-width: 768px) {
-    .categoriasList {
-        gap: 8px;
-    }
+.filterContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+}
 
-    .categoriaCard {
-        font-size: 0.78rem;
-        padding: 6px 14px;
+.mobileFilterBtn {
+    display: none;
+    background-color: #001529;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 15px;
+}
+
+.mobileFilterBtn:hover {
+    background-color: #00d2ff;
+    color: #001529;
+}
+
+@media screen and (max-width: 1300px) {
+    .categoriasList {
+        padding: 12px;
+        max-width: 80%;
+        max-height: 100px;
+        overflow: scroll;
     }
 }
 
-@media screen and (max-width:1280px) {
-    .productsList {}
+@media screen and (max-width: 1000px) {
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .productsList {
+        gap: 20px;
+    }
+
+    .mobileFilterBtn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .categoriasList {
+        display: none;
+        width: 100%;
+        max-width: 500px;
+        background-color: #f4f6f8;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #e0e0e0;
+        margin-bottom: 0;
+        max-height: 150px;
+        overflow: scroll;
+    }
+
+    .categoriasList.open {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+    }
+
+    .title::after {
+        width: 40px;
+        height: 3px;
+    }
+
+    .productsList {
+        gap: 12px;
+    }
+
+    .paginationButton {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.78rem;
+        padding: 4px 6px;
+    }
+
+    .paginationContainer {
+        gap: 4px;
+    }
+
+    .mobileFilterBtn {
+        font-size: 0.85rem;
+        padding: 8px 16px;
+        margin-bottom: 12px;
+        border-radius: 6px;
+    }
+
+    .categoriasList {
+        padding: 12px;
+        max-width: 90%;
+        max-height: 100px;
+        overflow: scroll;
+    }
+
+    .categoriaCard {
+        font-size: 0.75rem;
+        padding: 6px 14px;
+        border-radius: 6px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .title {
+        font-size: 1.1rem;
+        letter-spacing: 0.5px;
+        margin-bottom: 16px;
+    }
+
+    .title::after {
+        width: 30px;
+        height: 3px;
+    }
+
+    .productsList {
+        gap: 8px;
+    }
+
+    .paginationButton {
+        min-width: 24px;
+        height: 24px;
+        font-size: 0.7rem;
+        padding: 2px 4px;
+    }
+
+    .paginationContainer {
+        gap: 3px;
+        margin-top: 20px;
+    }
+
+    .paginationInfo {
+        font-size: 0.72rem;
+    }
+
+    .mobileFilterBtn {
+        font-size: 0.55rem;
+        padding: 6px 12px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    .categoriasList {
+        padding: 10px;
+        max-width: 90%;
+        max-height: 70px;
+        overflow: scroll;
+    }
+
+    .categoriaCard {
+        font-size: 0.55rem;
+        padding: 3px 11px;
+        border-radius: 4px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .title {
+        font-size: 1rem;
+        letter-spacing: 0px;
+    }
+
+    .productsList {
+        gap: 6px;
+    }
+
+    .paginationButton {
+        min-width: 22px;
+        height: 22px;
+        font-size: 0.65rem;
+        padding: 2px 3px;
+    }
+
+    .paginationInfo {
+        font-size: 0.65rem;
+    }
 }

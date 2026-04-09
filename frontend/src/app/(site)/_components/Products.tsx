@@ -12,6 +12,7 @@ export default function Products() {
     const [products, setProducts] = useState<sportsItemType[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [categoriaSelecionada, setCategoriaSelecionada] = useState<string | null>(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         async function getProducts() {
@@ -49,6 +50,7 @@ export default function Products() {
     const selecionarCategoria = (id: string | null) => {
         setCategoriaSelecionada(id);
         setCurrentPage(1); 
+        setIsMenuOpen(false);
     };
 
     const getPageNumbers = (): (number | '...')[] => {
@@ -66,10 +68,19 @@ export default function Products() {
     };
 
     return (
-        <section className={styles.products} id="products">
-            <h1 className={styles.title}>Nosso Inventário </h1>
+    <section className={styles.products} id="products">
+        <h1 className={styles.title}>Nosso Inventário </h1>
 
-            <div className={styles.categoriasList}>
+        <div className={styles.filterContainer}>
+            
+            <button
+                className={styles.mobileFilterBtn}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+                {isMenuOpen ? '✕ Fechar Categorias' : '☰ Filtrar Categorias'}
+            </button>
+
+            <div className={`${styles.categoriasList} ${isMenuOpen ? styles.open : ''}`}>
                 <button
                     className={`${styles.categoriaCard} ${categoriaSelecionada === null ? styles.categoriaAtiva : ''}`}
                     onClick={() => selecionarCategoria(null)}
@@ -86,50 +97,51 @@ export default function Products() {
                     </button>
                 ))}
             </div>
+        </div>
 
-            <div className={styles.container}>
-                <div className={styles.productsList}>
-                    {paginated.map((product) => (
-                        <ProductCard key={product.id} {...product} />
-                    ))}
-                </div>
-
-                <p className={styles.paginationInfo}>
-                    Mostrando {Math.min((currentPage - 1) * ITEMS_PER_PAGE + 1, produtosFiltrados.length)}–{Math.min(currentPage * ITEMS_PER_PAGE, produtosFiltrados.length)} de {produtosFiltrados.length} produtos
-                </p>
-
-                <div className={styles.paginationContainer}>
-                    <button
-                        className={styles.paginationButton}
-                        onClick={() => goTo(currentPage - 1)}
-                        disabled={currentPage === 1}
-                    >
-                        ‹
-                    </button>
-
-                    {getPageNumbers().map((page, idx) =>
-                        page === '...' ? (
-                            <span key={idx} className={styles.paginationDots}>…</span>
-                        ) : (
-                            <button
-                                key={idx}
-                                className={`${styles.paginationButton} ${currentPage === page ? styles.active : ''}`}
-                                onClick={() => goTo(page as number)}
-                            >
-                                {page}
-                            </button>
-                        )
-                    )}
-
-                    <button
-                        className={styles.paginationButton}
-                        onClick={() => goTo(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                    >
-                        ›
-                    </button>
-                </div>
+        <div className={styles.container}>
+            <div className={styles.productsList}>
+                {paginated.map((product) => (
+                    <ProductCard key={product.id} {...product} />
+                ))}
             </div>
-        </section>
-    )
+
+            <p className={styles.paginationInfo}>
+                Mostrando {Math.min((currentPage - 1) * ITEMS_PER_PAGE + 1, produtosFiltrados.length)}–{Math.min(currentPage * ITEMS_PER_PAGE, produtosFiltrados.length)} de {produtosFiltrados.length} produtos
+            </p>
+
+            <div className={styles.paginationContainer}>
+                <button
+                    className={styles.paginationButton}
+                    onClick={() => goTo(currentPage - 1)}
+                    disabled={currentPage === 1}
+                >
+                    ‹
+                </button>
+
+                {getPageNumbers().map((page, idx) =>
+                    page === '...' ? (
+                        <span key={idx} className={styles.paginationDots}>…</span>
+                    ) : (
+                        <button
+                            key={idx}
+                            className={`${styles.paginationButton} ${currentPage === page ? styles.active : ''}`}
+                            onClick={() => goTo(page as number)}
+                        >
+                            {page}
+                        </button>
+                    )
+                )}
+
+                <button
+                    className={styles.paginationButton}
+                    onClick={() => goTo(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                >
+                    ›
+                </button>
+            </div>
+        </div>
+    </section>
+)
 }

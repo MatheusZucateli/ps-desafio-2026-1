@@ -8,11 +8,10 @@
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid #ffffff;
     cursor: pointer;
-    width: 300px;
+    width: 280px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 450px;
     justify-content: space-between;
 }
 
@@ -179,4 +178,243 @@
     font-weight: 700;
     color: #001529;
     user-select: none;
+}
+
+@media screen and (max-width: 1300px) {
+    .productCard {
+        width: 220px;
+        padding: 15px;
+        min-height: 300px;
+    }
+
+    .productName {
+        font-size: 1rem;
+    }
+
+    .productCategory,
+    .productBrand,
+    .productYear {
+        font-size: 0.75rem;
+    }
+
+    .productPrice {
+        font-size: 1.1rem;
+    }
+
+    .productButton {
+        font-size: 0.9rem;
+        padding: 9px 8px;
+    }
+
+    .productStock {
+        font-size: 0.72rem;
+        padding: 4px 8px;
+    }
+
+    .qtyBtn {
+        width: 28px;
+        font-size: 1rem;
+    }
+
+    .qtyValue,
+    .qtyInput {
+        min-width: 28px;
+        font-size: 0.9rem;
+    }
+
+    .qtySelector {
+        height: 38px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .productCard {
+        width: 220px;
+        padding: 13px;
+        min-height: 280px;
+    }
+
+    .productName {
+        font-size: 1rem;
+    }
+
+    .productCategory,
+    .productBrand,
+    .productYear {
+        font-size: 0.75rem;
+    }
+
+    .productPrice {
+        font-size: 1.1rem;
+    }
+
+    .productButton {
+        font-size: 0.9rem;
+        padding: 9px 8px;
+    }
+
+    .productStock {
+        font-size: 0.72rem;
+        padding: 3px 7px;
+    }
+
+    .qtyBtn {
+        width: 28px;
+        font-size: 1rem;
+    }
+
+    .qtyValue,
+    .qtyInput {
+        min-width: 28px;
+        font-size: 0.9rem;
+    }
+
+    .qtySelector {
+        height: 38px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .productCard {
+        max-width: 180px;
+        min-height: auto;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .productLink {
+        aspect-ratio: 4 / 3;
+    }
+
+    .productName {
+        font-size: 0.75rem;
+        margin-top: 8px;
+        margin-bottom: 4px;
+        height: auto;
+    }
+
+    .productCategory,
+    .productBrand,
+    .productYear {
+        font-size: 0.65rem;
+    }
+
+    .productPrice {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+        margin-top: 8px;
+    }
+
+    .productButton {
+        font-size: 0.7rem;
+        padding: 7px 4px;
+    }
+
+    .productStock {
+        font-size: 0.7rem;
+        padding: 6px 9px;
+    }
+
+    .qtyBtn {
+        width: 22px;
+        font-size: 0.9rem;
+    }
+
+    .qtyValue,
+    .qtyInput {
+        min-width: 22px;
+        font-size: 0.8rem;
+    }
+
+    .buyRow {
+        gap: 6px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .productCard {
+        width: 160px;
+        padding: 8px;
+        min-height: auto;
+    }
+
+    .productName {
+        font-size: 0.65rem;
+    }
+
+    .productCategory,
+    .productBrand,
+    .productYear {
+        font-size: 0.58rem;
+    }
+
+    .productPrice {
+        font-size: 0.75rem;
+        margin-bottom: 6px;
+    }
+
+    .productButton {
+        font-size: 0.6rem;
+        padding: 5px 3px;
+    }
+
+    .productStock {
+        font-size: 0.6rem;
+        padding: 6px 8px;
+    }
+
+    .qtyBtn {
+        width: 18px;
+        font-size: 0.8rem;
+    }
+
+    .qtyValue,
+    .qtyInput {
+        min-width: 18px;
+        font-size: 0.7rem;
+    }
+
+    .qtySelector {
+        height: 32px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .productCard {
+        width: 140px;
+        min-height: auto;
+        padding: 8px;
+    }
+
+    .productName {
+        font-size: 0.6rem;
+    }
+
+    .productCategory,
+    .productBrand,
+    .productYear {
+        font-size: 0.55rem;
+    }
+
+    .productPrice {
+        font-size: 0.7rem;
+    }
+
+    .productButton {
+        font-size: 0.55rem;
+        padding: 4px 2px;
+    }
+
+    .qtyBtn {
+        width: 16px;
+        font-size: 0.75rem;
+    }
+
+    .qtySelector {
+        height: 28px;
+    }
+
+    .productStock {}
 }

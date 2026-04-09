@@ -8,7 +8,7 @@ export default function Header() {
       <div className={styles.container}>
 
         <div className={styles.hamb}>
-          <span>x</span>
+          <span></span>
         </div>
 
         <div className={styles.logo}>
