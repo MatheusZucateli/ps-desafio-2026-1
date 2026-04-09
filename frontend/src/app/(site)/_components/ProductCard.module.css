@@ -1,24 +1,39 @@
 .productCard {
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 20px 4px 20px 4px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     position: relative;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid #ffffff;
     cursor: pointer;
+    width: 300px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 450px;
+    justify-content: space-between;
 }
 
 .productCard:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.3);
-    border: 1px solid rgba(0, 210, 255, 0.5);
+    transform: translateY(-12px);
+    border-color: #00d2ff;
+    box-shadow: 0 20px 40px rgba(0, 210, 255, 0.25);
+}
+
+.productTop {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .productLink {
     aspect-ratio: 300 / 200;
+    border-radius: 12px;
+    overflow: hidden;
     display: block;
+    margin-bottom: 15px;
     max-width: 100%;
     max-height: 200px;
 }
@@ -27,12 +42,26 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.productCard:hover .productImage {
+    transform: scale(1.1);
 }
 
 .productName {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #333;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #001529;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    height: 2.8rem;
+    line-height: 1.4rem;
+    overflow: hidden;
+}
+
+.productBottom {
+    margin-top: auto;
 }
 
 .productCategory {
@@ -58,23 +87,26 @@
 }
 
 .productPrice {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: #001529;
-    margin-bottom: 15px;
-    text-align: center;
-    font-weight: 800;
+    font-weight: 900;
+    margin: 10px 0;
+    display: block;
 }
 
 .productStock {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #df8e1e;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #f69915, #ff5e00);
     color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-    font-weight: 500;
+    padding: 6px 15px;
+    border-radius: 0 0 15px 0;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 10;
 }
 
 .productButton {
@@ -94,10 +126,57 @@
 .productButton:hover {
     background-color: #00d2ff;
     color: #001529;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.5)
 }
 
 .productButton:disabled {
     background-color: #ccc;
     color: #666;
     cursor: not-allowed;
+}
+
+.buyRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.qtySelector {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 42px;
+}
+
+.qtyBtn {
+    width: 32px;
+    height: 100%;
+    background: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #001529;
+    transition: background 0.2s;
+}
+
+.qtyBtn:hover:not(:disabled) {
+    background: #00d2ff;
+}
+
+.qtyBtn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.qtyValue {
+    min-width: 32px;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #001529;
+    user-select: none;
 }

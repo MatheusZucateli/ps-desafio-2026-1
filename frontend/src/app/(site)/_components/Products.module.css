@@ -3,21 +3,146 @@
 }
 
 .container {
-    max-width: 1280px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
 .title {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #000000;
+    font-size: 2.2rem;
+    font-weight: 900;
     text-align: center;
+    margin-bottom: 32px;
+    color: #001529;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #00d2ff;
+    border-radius: 2px;
+    margin: 10px auto 0;
 }
 
 .productsList {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 1;
+    gap: 30px;
+}
+
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+
+.paginationButton {
+    background-color: #ffffff;
+    color: #001529;
+    border: 1px solid #d9d9d9;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paginationButton:hover {
+    border-color: #00d2ff;
+    color: #00d2ff;
+}
+
+.paginationButton.active {
+    background-color: #001529;
+    color: #ffffff;
+    border-color: #001529;
+}
+
+.paginationButton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.paginationButton:disabled:hover {
+    border-color: #d9d9d9;
+    color: #001529;
+}
+
+.paginationDots {
+    color: #999;
+    padding: 0 4px;
+    font-size: 1rem;
+}
+
+.paginationInfo {
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+    margin-top: 16px;
+}
+
+.categoriasList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding: 0 20px;
+}
+
+.categoriaCard {
+    background-color: #ffffff;
+    color: #001529;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.categoriaCard:hover {
+    border-color: #00d2ff;
+    color: #00d2ff;
+}
+
+.categoriaAtiva {
+    background-color: #001529;
+    color: #ffffff;
+    border-color: #001529;
+}
+
+@media (max-width: 768px) {
+    .categoriasList {
+        gap: 8px;
+    }
+
+    .categoriaCard {
+        font-size: 0.78rem;
+        padding: 6px 14px;
+    }
+}
+
+@media screen and (max-width:1280px) {
+    .productsList {}
 }

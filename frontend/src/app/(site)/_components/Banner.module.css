@@ -1,5 +1,7 @@
 .container {
     aspect-ratio: 1400/300;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .bannerImage {
